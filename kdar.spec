@@ -1,23 +1,18 @@
-
-# Conditional build:
-%bcond_with     verbose # verbose build
 Summary:	KDar - K Disk archiver
 Summary(pl):	KDar - archiwizer dysków K
 Name:		kdar
 Version:	2.0.0
-Release:	0.1
-License:	GPL
+Release:	0.2
+License:	GPL v2
 Group:		Applications/Archiving
 Source0:	http://dl.sourceforge.net/kdar/%{name}-%{version}.tar.bz2
 # Source0-md5:	c2c5d87bde278eacbe5c5ad3027bc59c
 Source1:	%{name}.desktop
 URL:		http://kdar.sf.net/
-BuildRequires:	autoconf
-BuildRequires:	automake
 BuildRequires:	dar-devel >= 2.2.0
+BuildRequires:	gettext-devel
 BuildRequires:	kdelibs-devel >= 9:3.3
 BuildRequires:	rpmbuild(macros) >= 1.167
-BuildRequires:	unsermake >= 040511
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %description
@@ -37,10 +32,6 @@ Denisa Corbina. Pozwala na kompresjê i podzia³ archiwów.
 %setup -q
 
 %build
-#cp -f /usr/share/automake/config.sub admin
-#export UNSERMAKE=/usr/share/unsermake/unsermake
-#%{__make} -f admin/Makefile.common cvs
-
 export CXXFLAGS="%{rpmcxxflags} -DQT_NO_STL"
 %configure \
 %if "%{_lib}" == "lib64"
