@@ -1,11 +1,12 @@
 [Desktop Entry]
 Encoding=UTF-8
-Name=KDar (Disk-based Archive Tool)
+Name=KDar
 Exec=kdar
 Icon=kdar
 Type=Application
 Categories=Qt;KDE;Utility;Archiving;
 DocPath=kdar/index.html
 Comment=A KDE frontend to DAR (Disk ARchive)
+Comment[pl]=Nakładka na DAR (Dyskowy ARchiwizator) dla KDE
 Terminal=false
 # vi: encoding=utf-8
