@@ -1,22 +1,22 @@
 
 # Conditional build:
 %bcond_with     verbose # verbose build
-
 Summary:	KDar - K Disk archiver
 Summary(pl):	KDar - archiwizer dysków K
 Name:		kdar
-Version:	1.3.2
-Release:	1
+Version:	2.0.0
+Release:	0.1
 License:	GPL
 Group:		Applications/Archiving
 Source0:	http://dl.sourceforge.net/kdar/%{name}-%{version}.tar.bz2
-# Source0-md5:	957a3f196a1966d481c2bcff81a1e0b8
+# Source0-md5:	c2c5d87bde278eacbe5c5ad3027bc59c
 Source1:	%{name}.desktop
 URL:		http://kdar.sf.net/
 BuildRequires:	autoconf
 BuildRequires:	automake
-BuildRequires:	dar-devel >= 2.1.4-2
-BuildRequires:	kdelibs-devel >= 9:3.2.0
+BuildRequires:	dar-devel >= 2.2.0
+BuildRequires:	kdelibs-devel >= 9:3.3
+BuildRequires:	rpmbuild(macros) >= 1.167
 BuildRequires:	unsermake >= 040511
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
@@ -37,17 +37,20 @@ Denisa Corbina. Pozwala na kompresjê i podzia³ archiwów.
 %setup -q
 
 %build
-cp -f /usr/share/automake/config.sub admin
-export UNSERMAKE=/usr/share/unsermake/unsermake
-%{__make} -f admin/Makefile.common cvs
+#cp -f /usr/share/automake/config.sub admin
+#export UNSERMAKE=/usr/share/unsermake/unsermake
+#%{__make} -f admin/Makefile.common cvs
 
+export CXXFLAGS="%{rpmcxxflags} -DQT_NO_STL"
 %configure \
 %if "%{_lib}" == "lib64"
 	--enable-libsuffix=64 \
-	--enable-largefile \
 %endif
+	--enable-mode=64 \
+	--enable-largefile \
 	--%{?debug:en}%{!?debug:dis}able-debug%{?debug:=full} \
 	--with-qt-libraries=%{_libdir}
+	
 %{__make} %{?with_verbose:VERBOSE=1}
 
 %install
@@ -71,4 +74,4 @@ rm -rf $RPM_BUILD_ROOT
 %attr(755,root,root) %{_bindir}/*
 %{_datadir}/apps/%{name}
 %{_desktopdir}/*
-%{_iconsdir}/*/*/*/*
+%{_iconsdir}/hicolor/*/*/*
