@@ -8,13 +8,12 @@ Version:	1.2.0
 Release:	0.%{_beta}.1
 License:	GPL
 Group:		Applications/Archiving
-Source0:	http://dl.sourceforge.net/sourceforge/%{name}/%{name}-%{version}-%{_beta}.tar.bz2
+Source0:	http://dl.sourceforge.net/kdar/%{name}-%{version}-%{_beta}.tar.bz2
 # Source0-md5:	cdd78e4dce2ba51b00dce32c03354e49
 URL:		http://kdar.sf.net/
-#BuildRequires:	attr-devel >= 2.4.16-3
 BuildRequires:	autoconf
 BuildRequires:	automake
-BuildRequires:	dar-devel >= 2.1.4-1
+BuildRequires:	dar-devel >= 2.1.4-2
 BuildRequires:	kdelibs-devel >= 9:3.2.0
 BuildRequires:	unsermake >= 040511
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
@@ -27,16 +26,16 @@ Corbin. Features include compression and archive splitting.
 
 %description -l pl
 KDar - archiwizer dysków K jest bazowanym na GUI KDE programem do
-backupu i archiwizacji. U¿ywaj go do przygotowania danych maj±cych siê
-znale¼æ na p³ytach CD-R, napêdach jazz, dyskietkach, czy nawet DVD.
-KDar wykorzystuje bibliotekê dar Denisa Corbina. Pozwala na kompresjê
-i podzia³ archiwów.
+tworzenia kopii zapasowych i archiwizacji. Mo¿na go u¿ywaæ do
+przygotowania danych maj±cych siê znale¼æ na p³ytach CD-R, napêdach
+jazz, dyskietkach, czy nawet DVD. KDar wykorzystuje bibliotekê dar
+Denisa Corbina. Pozwala na kompresjê i podzia³ archiwów.
 
 %prep
 %setup -q -n %{name}-%{version}-%{_beta}
 
 %build
-cp -f %{_datadir}/automake/config.sub .
+cp -f /usr/share/automake/config.* admin
 %configure \
 	--with-qt-libraries=%{_libdir}
 %{__make}
@@ -49,14 +48,15 @@ rm -rf $RPM_BUILD_ROOT
 	kde_htmldir=%{_kdedocdir} \
 	kde_libs_htmldir=%{_kdedocdir}
 
+%find_lang %{name} --with-kde
+
 %clean
 rm -rf $RPM_BUILD_ROOT
 
-%files
+%files -f %{name}.lang
 %defattr(644,root,root,755)
 %doc AUTHORS ChangeLog NEWS README THANKS TODO USAGE
 %attr(755,root,root) %{_bindir}/*
 %{_datadir}/apps/%{name}
 #%%{_desktopdir}/*
 %{_iconsdir}/*/*/*/*
-%{_docdir}/kde/HTML/en/%{name}
