@@ -1,12 +1,12 @@
 Summary:	KDar - K Disk archiver
 Summary(pl):	KDar - archiwizer dysków K
 Name:		kdar
-Version:	2.0.0
-Release:	0.2
+Version:	2.0.1
+Release:	0.1
 License:	GPL v2
 Group:		Applications/Archiving
 Source0:	http://dl.sourceforge.net/kdar/%{name}-%{version}.tar.bz2
-# Source0-md5:	c2c5d87bde278eacbe5c5ad3027bc59c
+# Source0-md5:	db9f846fdb98d640b4bd7b978cfa0288
 Source1:	%{name}.desktop
 URL:		http://kdar.sf.net/
 BuildRequires:	dar-devel >= 2.2.0
