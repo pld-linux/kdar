@@ -1,15 +1,17 @@
 
-%define		_beta	beta3
+# Conditional build:
+%bcond_with     verbose # verbose build
 
 Summary:	KDar - K Disk archiver
 Summary(pl):	KDar - archiwizer dysków K
 Name:		kdar
-Version:	1.2.0
-Release:	0.%{_beta}.1
+Version:	1.3.1
+Release:	1
 License:	GPL
 Group:		Applications/Archiving
-Source0:	http://dl.sourceforge.net/kdar/%{name}-%{version}-%{_beta}.tar.bz2
-# Source0-md5:	cdd78e4dce2ba51b00dce32c03354e49
+Source0:	http://dl.sourceforge.net/kdar/%{name}-%{version}.tar.bz2
+# Source0-md5:	bad9965ccc5d0c97321a307d3849262f		
+Source1:	%{name}.desktop
 URL:		http://kdar.sf.net/
 BuildRequires:	autoconf
 BuildRequires:	automake
@@ -32,13 +34,21 @@ jazz, dyskietkach, czy nawet DVD. KDar wykorzystuje bibliotekê dar
 Denisa Corbina. Pozwala na kompresjê i podzia³ archiwów.
 
 %prep
-%setup -q -n %{name}-%{version}-%{_beta}
+%setup -q
 
 %build
-cp -f /usr/share/automake/config.* admin
+cp -f /usr/share/automake/config.sub admin
+export UNSERMAKE=/usr/share/unsermake/unsermake
+%{__make} -f admin/Makefile.common cvs
+
 %configure \
+%if "%{_lib}" == "lib64"
+	--enable-libsuffix=64 \
+	--enable-largefile \
+%endif
+	--%{?debug:en}%{!?debug:dis}able-debug%{?debug:=full} \
 	--with-qt-libraries=%{_libdir}
-%{__make}
+%{__make} %{?with_verbose:VERBOSE=1}
 
 %install
 rm -rf $RPM_BUILD_ROOT
@@ -47,6 +57,8 @@ rm -rf $RPM_BUILD_ROOT
 	DESTDIR=$RPM_BUILD_ROOT \
 	kde_htmldir=%{_kdedocdir} \
 	kde_libs_htmldir=%{_kdedocdir}
+
+install -D %{SOURCE1} $RPM_BUILD_ROOT%{_desktopdir}/%{name}.desktop
 
 %find_lang %{name} --with-kde
 
@@ -58,5 +70,5 @@ rm -rf $RPM_BUILD_ROOT
 %doc AUTHORS ChangeLog NEWS README THANKS TODO USAGE
 %attr(755,root,root) %{_bindir}/*
 %{_datadir}/apps/%{name}
-#%%{_desktopdir}/*
+%{_desktopdir}/*
 %{_iconsdir}/*/*/*/*
