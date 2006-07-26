@@ -8,7 +8,7 @@ Group:		Applications/Archiving
 Source0:	http://dl.sourceforge.net/kdar/%{name}-%{version}.tar.bz2
 # Source0-md5:	fae125b664f9c4b6fe200eb101331a0a
 Source1:	%{name}.desktop
-URL:		http://kdar.sf.net/
+URL:		http://kdar.sourceforge.net/
 BuildRequires:	dar-devel >= 2.2.1
 BuildRequires:	gettext-devel
 BuildRequires:	kdelibs-devel >= 9:3.3
