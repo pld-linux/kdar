@@ -68,5 +68,5 @@ rm -rf $RPM_BUILD_ROOT
 %doc AUTHORS ChangeLog NEWS README THANKS TODO USAGE
 %attr(755,root,root) %{_bindir}/*
 %{_datadir}/apps/%{name}
-%{_desktopdir}/*
+%{_desktopdir}/*.desktop
 %{_iconsdir}/hicolor/*/*/*
