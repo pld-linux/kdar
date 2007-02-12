@@ -1,5 +1,5 @@
 Summary:	KDar - K Disk archiver
-Summary(pl):	KDar - archiwizer dysków K
+Summary(pl.UTF-8):   KDar - archiwizer dyskÃ³w K
 Name:		kdar
 Version:	2.0.7
 Release:	1
@@ -21,12 +21,12 @@ program. Use it to prepare your data for storage on CD-Rs, jazz
 drives, floppies, even DVDs. KDar uses the dar library by Denis
 Corbin. Features include compression and archive splitting.
 
-%description -l pl
-KDar - archiwizer dysków K jest bazowanym na GUI KDE programem do
-tworzenia kopii zapasowych i archiwizacji. Mo¿na go u¿ywaæ do
-przygotowania danych maj±cych siê znale¼æ na p³ytach CD-R, napêdach
-jazz, dyskietkach, czy nawet DVD. KDar wykorzystuje bibliotekê dar
-Denisa Corbina. Pozwala na kompresjê i podzia³ archiwów.
+%description -l pl.UTF-8
+KDar - archiwizer dyskÃ³w K jest bazowanym na GUI KDE programem do
+tworzenia kopii zapasowych i archiwizacji. MoÅ¼na go uÅ¼ywaÄ‡ do
+przygotowania danych majÄ…cych siÄ™ znaleÅºÄ‡ na pÅ‚ytach CD-R, napÄ™dach
+jazz, dyskietkach, czy nawet DVD. KDar wykorzystuje bibliotekÄ™ dar
+Denisa Corbina. Pozwala na kompresjÄ™ i podziaÅ‚ archiwÃ³w.
 
 %prep
 %setup -q
