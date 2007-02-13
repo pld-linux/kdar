@@ -1,5 +1,5 @@
 Summary:	KDar - K Disk archiver
-Summary(pl.UTF-8):   KDar - archiwizer dysków K
+Summary(pl.UTF-8):	KDar - archiwizer dysków K
 Name:		kdar
 Version:	2.0.7
 Release:	1
