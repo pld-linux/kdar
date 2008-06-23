@@ -13,6 +13,7 @@ BuildRequires:	dar-devel >= 2.2.1
 BuildRequires:	gettext-devel
 BuildRequires:	kdelibs-devel >= 9:3.3
 BuildRequires:	rpmbuild(macros) >= 1.167
+Suggests:	gamin
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %description
