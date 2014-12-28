@@ -10,7 +10,7 @@ Source0:	http://dl.sourceforge.net/kdar/%{name}-%{version}.tar.bz2
 Source1:	%{name}.desktop
 URL:		http://kdar.sourceforge.net/
 BuildRequires:	dar-devel >= 2.2.1
-BuildRequires:	gettext-devel
+BuildRequires:	gettext-tools
 BuildRequires:	kdelibs-devel >= 9:3.3
 BuildRequires:	rpmbuild(macros) >= 1.167
 Suggests:	gamin
